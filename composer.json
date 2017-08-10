@@ -1,13 +1,15 @@
 {
-    "name": "sunnysideup/copyright",
+    "name": "sunnysideup/call_to_action",
     "type": "silverstripe-module",
-    "description": "add a copy right notice to your silverstripe website / application",
+    "description": "Add a call to action to any Silverstripe web page",
     "keywords": [
         "Silverstripe-CMS",
         "CMS",
         "Silverstripe",
-        "siteconfig",
-        "copyright"
+        "Large Image",
+        "Splash",
+        "Call to Action",
+        "Intro"
     ],
     "license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
     "authors": [
@@ -18,9 +20,9 @@
         }
     ],
     "require": {
-        "silverstripe/siteconfig": "~3.1"
+        "silverstripe/cms": "~3.1"
     },
     "extra": {
-        "installer-name": "copyright"
+        "installer-name": "call_to_action"
     }
 }
