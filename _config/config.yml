@@ -1,0 +1,5 @@
+name: Call To Action
+---
+Page:
+  extensions:
+    - CallToActionPageExtension
