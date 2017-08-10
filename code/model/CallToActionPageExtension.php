@@ -8,7 +8,6 @@
 
 class CallToActionPageExtension extends DataExtension
 {
-
     private static $db = [
         'LargeText' => 'Varchar(255)',
         'LargeTextFontColour' => 'enum("white,black", "white")',

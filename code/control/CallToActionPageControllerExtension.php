@@ -8,21 +8,18 @@
 
 class CallToActionPageControllerExtension extends Extension
 {
-    private static $db = [
-        'TextField' => 'Varchar(100)'
-    ];
-
-    public function updateCMSFields(FieldList $fields)
+    public function onAfterInit()
     {
-        $tabTitle = _t('CopyrightSiteConfigExtras.PAGE_ELEMENTS', 'Page Elements');
-        $fields->addFieldToTab(
-            'Root.'.$tabTitle,
-            $editor = HTMLEditorField::createField(
-                'CopyrightNotice',
-                _t('CopyrightSiteConfigExtras.COPYRIGHT', 'COPYRIGHT'))
-        );
-        $editor->setRows(4);
-
-        return $fields;
+        if($this->owner->LargeImageID && $this->owner->LargeImage()->exists()) {
+            Requirements::customCSS('
+                .large-image {background-image: url('.$this->LargeImage()->Link().');}
+                @media
+                (-webkit-min-device-pixel-ratio: 1.5),
+                (min-resolution: 144dpi){
+                    .large-image {background-image: url('.$this->LargeImage()->setWidth(4800)->Link().');}
+                }
+            ',
+            'large-image');
+        }
     }
 }
