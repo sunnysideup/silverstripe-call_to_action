@@ -35,7 +35,7 @@ class CallToActionPageExtension extends DataExtension
     ];
 
     private static $field_labels_right = [
-        'LargeText' => 'A short sentence showing as the main text on the image.'
+        'LargeText' => 'A short sentence showing as the main text on the image.',
         'LargeTextFontColour' => 'Text Colour',
         'LargeImageFocusPoint' => 'What part of the image should be visible no matter what?',
         'LargeImage' => 'Please ensure it is at least 2800px wide, but preferably a highly compressed image of 4800px wide',
@@ -46,7 +46,7 @@ class CallToActionPageExtension extends DataExtension
     public function updateCMSFields(FieldList $fields)
     {
         $fieldLabels = $this->owner->FieldLabels();
-        $fieldLabelsRight = $this->Config()->get('field_labels_right');
+        $fieldLabelsRight = Config::inst()->get('CallToActionPageExtension', 'field_labels_right');
         $tabTitle = _t('CallToActionPageExtension.CALL_TO_ACTION', 'Call to Action');
         $fields->addFieldsToTab(
             'Root.'.$tabTitle,
@@ -61,8 +61,8 @@ class CallToActionPageExtension extends DataExtension
                 )->setRightTitle($fieldLabelsRight['LargeText']),
                 DropdownField::create(
                     'LargeTextFontColour',
-                    $fieldLabels['LargeTextFontColour']
-                    $this->Config()->get('colour_font_options')
+                    $fieldLabels['LargeTextFontColour'],
+                    Config::inst()->get('CallToActionPageExtension', 'colour_font_options')
                 )->setRightTitle($fieldLabelsRight['LargeTextFontColour']),
                 TextField::create(
                     'CallToAction',
@@ -70,15 +70,15 @@ class CallToActionPageExtension extends DataExtension
                 )->setRightTitle($fieldLabelsRight['CallToAction']),
                 TreeDropdownField::create(
                     'CallToActionLinkID',
-                    $fieldLabels['CallToActionLinkID']
+                    $fieldLabels['CallToActionLink'],
                     'SiteTree'
-                )->setRightTitle($fieldLabelsRight['CallToActionLinkID']),
+                )->setRightTitle($fieldLabelsRight['CallToActionLink']),
                 DropdownField::create(
-                    'LargeImagFocusPoint',
-                    $fieldLabels['LargeImagFocusPoint']
+                    'LargeImageFocusPoint',
+                    $fieldLabels['LargeImageFocusPoint'],
                     $this->owner->dbObject('LargeImageFocusPoint')->enumValues()
-                )->setRightTitle($fieldLabelsRight['LargeImagFocusPoint'])
-            )
+                )->setRightTitle($fieldLabelsRight['LargeImageFocusPoint'])
+            ]
         );
 
         return $fields;
