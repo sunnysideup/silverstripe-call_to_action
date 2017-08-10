@@ -1,7 +1,7 @@
 <% if $LargeImage %>
 <figure class="large-image">
     <style scoped>
-    .large-image {background-image: url('$LargeImage.SetWidth(2800)');}
+    .large-image {background-image: url('$LargeImage.Link');}
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
         .large-image {background-image: url('$LargeImage.Link');}
     }
