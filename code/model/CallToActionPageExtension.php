@@ -16,12 +16,12 @@ class CallToActionPageExtension extends DataExtension
     ];
 
     private static $has_one = [
-        'LargeImage' => 'Image'
+        'LargeImage' => 'Image',
         'CallToActionLink' => 'SiteTree'
     ];
 
     private static $field_labels = [
-        'LargeText' => 'Text'
+        'LargeText' => 'Text',
         'LargeTextFontColour' => 'Text Colour',
         'LargeImageFocusPoint' => 'Focus Point',
         'CallToAction' => 'Call to Action',
@@ -35,10 +35,10 @@ class CallToActionPageExtension extends DataExtension
     ];
 
     private static $field_labels_right = [
-        'LargeText' => 'A short sentence'
+        'LargeText' => 'A short sentence showing as the main text on the image.'
         'LargeTextFontColour' => 'Text Colour',
-        'LargeImageFocusPoint' => 'What part of the image should be visible no matter what',
-        'LargeImage' => 'please ensure it is at least 2800px wide',
+        'LargeImageFocusPoint' => 'What part of the image should be visible no matter what?',
+        'LargeImage' => 'Please ensure it is at least 2800px wide, but preferably a highly compressed image of 4800px wide',
         'CallToAction' => 'The text on the button - e.g. Sign Up Now (Optional)',
         'CallToActionLink' => 'Optional link on button, if left blank users will simply scroll down.'
     ];
@@ -76,7 +76,7 @@ class CallToActionPageExtension extends DataExtension
                 DropdownField::create(
                     'LargeImagFocusPoint',
                     $fieldLabels['LargeImagFocusPoint']
-                    $this->dbObject('LargeImageFocusPoint')->enumValues()
+                    $this->owner->dbObject('LargeImageFocusPoint')->enumValues()
                 )->setRightTitle($fieldLabelsRight['LargeImagFocusPoint'])
             )
         );

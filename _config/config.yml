@@ -3,7 +3,3 @@ name: call_to_action
 Page:
   extensions:
     - CallToActionPageExtension
-    
-Page_Controller:
-  extensions:
-    - CallToActionPageControllerExtension
