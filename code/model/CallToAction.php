@@ -9,7 +9,7 @@
 class CallToAction extends DataObject
 {
     private static $db = [
-        'Title' => 'Varchar(50)',
+        'Title' => 'Varchar(100)',
         'Text' => 'Varchar(255)',
         'FontColour' => 'enum("white,black", "white")',
         'ImageFocusPoint' => 'enum("Centre,N,NW,W,SW,S,SE,E,NE", "Centre")',
