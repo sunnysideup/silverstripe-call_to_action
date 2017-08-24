@@ -1,29 +1,31 @@
-<% if $CallToAction %>
+<% if $HasCallToAction %>
     <% with $CallToAction %>
-    <figure class="large-image">
+    <figure class="large-image {$ImageFocusPoint}-position" id="large-image">
         <style scoped>
-        .large-image {
-            background-image: url('$LargeImage.Link');
+        #large-image {
+            background-image: url('$Image.Link');
             background-position: $BackgroundPosition;
         }
-        h1, p {
-             color: $LargeTextFontColour!important
+        #large-image h1,
+        #large-image p {
+             color: $FontColour;
         }
         @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){
-            .large-image {background-image: url('$LargeImage.Link');}
+            #large-image {background-image: url('$Image.Link');}
         }
         </style>
-        <% if LargeText %>
-        <figcaption>
-            <h1>$LargeTextTitle</h1>
-            <p>$LargeText</p>
+        <figcaption class="$FontColour">
+            <% if Title %><h1>$Title</h1><% end_if %>
+            <br />
+            <% if Text %><span>$Text</span><% end_if %>
         </figcaption>
-        <% end_if %>
 
-        <% if $CallToActionLink %>
-            <a href="$CallToActionLink.Link" class="button">$CallToAction</a>
-        <% else %>
-            <% if $CallToAction %><a href="#MainDetails" class="button">$CallToAction</a><% end_if %>
+        <% if $CallToAction %>
+            <% if $Link %>
+                <a href="$Link.Link" class="button">$CallToAction</a>
+            <% else %>
+                <a href="#MainDetails" class="button">$CallToAction</a>
+            <% end_if %>
         <% end_if %>
     </figure>
     <% end_with %>

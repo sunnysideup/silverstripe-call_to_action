@@ -25,18 +25,17 @@ class CallToActionPageExtension extends DataExtension
         $fieldLabels = $this->owner->FieldLabels();
         $fieldLabelsRight = Config::inst()->get('CallToActionPageExtension', 'field_labels_right');
         $tabTitle = _t('CallToActionPageExtension.CALL_TO_ACTION', 'Call to Action');
-        if($this->CallToAction()->exists()){
-            $fields->addFieldToTab(
-                'Root.'.$tabTitle,
-                ReadonlyField::create("add", "CallToAction", $this->Address()->toString())
-            );
-        }
-        $fields->removeByName("CallToActionID");
-        $fields->addFieldToTab(
+        $fields->addFieldsToTab(
             'Root.'.$tabTitle,
-            HasOneButtonField::create("CallToAction", "CallToAction", $this) //here!
-        );
+            [
+                DropdownField::create(
+                    'CallToActionID',
+                    $tabTitle,
+                    [0 => _t('CallToActionPageExtension', '-- please select --')] +CallToAction::get()->map()->toArray()
+                ),
 
+            ]
+        );
         return $fields;
     }
 }
