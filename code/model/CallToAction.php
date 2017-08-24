@@ -107,18 +107,18 @@ class CallToAction extends DataObject
             ]
         );
         $fields->removeByName('Pages');
-        
+
         return $fields;
     }
 
     function CMSEditLink()
     {
-
+        return Director::absoluteBaseURL('/').'admin/calltoaction/CallToAction/EditForm/field/CallToAction/item/'.$this->ID.'/edit/';
     }
 
     function CMSAddLink()
     {
-
+        return Director::absoluteBaseURL('/').'/admin/calltoaction/CallToAction/EditForm/field/CallToAction/item/new';
     }
 
     /**
