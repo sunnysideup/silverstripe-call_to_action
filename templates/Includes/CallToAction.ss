@@ -22,7 +22,7 @@
 
         <% if $CallToAction %>
             <% if $Link %>
-                <a href="$Link.Link" class="button">$CallToAction</a>
+                <a href="$Link.Link" class="button do-not-bubble">$CallToAction</a>
             <% else %>
                 <a href="#MainDetails" class="button">$CallToAction</a>
             <% end_if %>
