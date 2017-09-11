@@ -15,9 +15,9 @@
         }
         </style>
         <figcaption class="$FontColour">
-            <% if Title %><h1>$Title</h1><% end_if %>
+            <% if Title %><h1><strong>$Title</strong></h1><% end_if %>
             <br />
-            <% if Text %><span>$Text</span><% end_if %>
+            <% if Text %><span><strong>$Text</strong></span><% end_if %>
         </figcaption>
 
         <% if $CallToAction %>

@@ -12,4 +12,5 @@ class CallToActionController extends Extension
             }
         }
     }
+
 }
