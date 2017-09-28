@@ -23,23 +23,41 @@ class CallToActionPageExtension extends DataExtension
     public function updateCMSFields(FieldList $fields)
     {
         $fieldLabels = $this->owner->FieldLabels();
+        $callToAction = CallToAction::singleton();
         $fieldLabelsRight = Config::inst()->get('CallToActionPageExtension', 'field_labels_right');
-        $tabTitle = _t('CallToActionPageExtension.CALL_TO_ACTION', 'Call to Action');
-        $link = '/admin/calltoaction/';
-        if($this->owner->CallToActionID) {
-            $link = $this->owner->CallToAction()->CMSEditLink();
+        $tabTitle0 = $callToAction->i18n_singular_name();
+        $link1 = '/admin/calltoaction/';
+        $tabTitle1 = _t('CallToActionPageExtension.CREATE_NEW', 'view all');
+        if ($this->owner->CallToActionID) {
+            $callToAction = $this->owner->CallToAction();
+            if ($callToAction && $callToAction->exists()) {
+                $link2 = $this->owner->CallToAction()->CMSEditLink();
+                $tabTitle2 = _t('CallToActionPageExtension.EDIT_CURRENT', 'edit').' '.$callToAction->getTitle();
+            }
+        }
+        if (! isset($link2)) {
+            $link2 = $callToAction->CMSAddLink();
+            $tabTitle2 = _t('CallToActionPageExtension.CREATE_NEW', 'create new').' '.$callToAction->i18n_singular_name();
         }
         $fields->addFieldsToTab(
-            'Root.'.$tabTitle,
+            'Root.'.$tabTitle0,
             [
                 DropdownField::create(
                     'CallToActionID',
-                    $tabTitle,
-                    [0 => _t('CallToActionPageExtension', '-- please select --')] +CallToAction::get()->map()->toArray()
+                    _t('CallToActionPageExtension.SELECT', 'select'),
+                    [0 => _t('CallToActionPageExtension.PLEASE_SELECT', '-- please select --')] +CallToAction::get()->map()->toArray()
+                ),
+                LiteralField::create(
+                    'CallToActionList',
+                    '<h2>
+                        ✎
+                        <a href="'.$link1.'" target="_blank">'.$tabTitle1.'</a> |
+                        <a href="'.$link2.'" target="_blank">'.$tabTitle2.'</a>
+                    <h2>'
                 ),
                 LiteralField::create(
                     'CallToActionEdit',
-                    '<h2><a href="'.$link.'">✎ '.$tabTitle.'</a><h2>'
+                    ''
                 )
             ]
         );
