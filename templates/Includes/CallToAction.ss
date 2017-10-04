@@ -3,6 +3,7 @@
     <figure class="large-image {$ImageFocusPoint}-position" id="large-image">
         <style scoped>
         #large-image {
+            height: 1200px;
             background-image: url('$Image.Link');
             background-position: $BackgroundPosition;
         }
