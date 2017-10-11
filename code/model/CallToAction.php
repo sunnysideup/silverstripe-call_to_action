@@ -13,7 +13,8 @@ class CallToAction extends DataObject
         'Text' => 'Varchar(255)',
         'FontColour' => 'enum("white,black", "white")',
         'ImageFocusPoint' => 'enum("Centre,N,NW,W,SW,S,SE,E,NE", "Centre")',
-        'CallToAction' => 'Varchar(50)'
+        'CallToAction' => 'Varchar(50)',
+        'VideoBackground' => 'Varchar(255)'
     ];
 
     private static $has_one = [
@@ -62,6 +63,7 @@ class CallToAction extends DataObject
         'ImageFocusPoint' => 'What part of the image should be visible no matter what?',
         'Image' => 'Please ensure it is at least 2800px wide, but preferably a highly compressed image of 4800px wide',
         'CallToAction' => 'The text on the button - e.g. Sign Up Now (Optional)',
+        'VideoBackground' => 'A link to a video anywhere on the internet. This takes priority over the image below.',
         'Link' => 'Optional link on button, if left blank users will simply scroll down.'
     ];
 

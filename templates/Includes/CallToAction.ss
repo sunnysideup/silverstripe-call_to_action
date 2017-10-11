@@ -15,6 +15,13 @@
             #large-image {background-image: url('$Image.Link');}
         }
         </style>
+        <% if $VideoBackground %>
+            <div class="video-wrap">
+                <video autoplay="" loop="" class="video-background" muted="">
+                    <source src="$VideoBackground" type="video/mp4">
+                </video>
+            </div>
+        <% end_if %>
         <figcaption class="$FontColour">
             <% if Title %><h1><strong>$Title</strong></h1><% end_if %>
             <br />
